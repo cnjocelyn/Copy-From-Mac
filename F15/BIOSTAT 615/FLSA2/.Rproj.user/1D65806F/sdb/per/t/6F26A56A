@@ -1,0 +1,17 @@
+{
+    "contents" : "Package: FlsaTwo\nTitle: FLSATwo\nVersion: 0.0.0.9000\nAuthors@R: Crazi\nDescription:This package provides a fast flsa solution for 2-dimensional fused lasso problem \nDepends: R (>= 3.2.2)\nLicense: What license is it under?\nLazyData: true\n",
+    "created" : 1450499596675.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "343257956",
+    "id" : "6F26A56A",
+    "lastKnownWriteTime" : 1450499986,
+    "path" : "~/FlsaTwo/DESCRIPTION",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "dcf"
+}
