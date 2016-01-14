@@ -1,0 +1,18 @@
+{
+    "contents" : "library(faraway)\ndata(infmort)\nattach(infmort)\n##remove samples with missing data\ndf = na.omit(infmort)\ndf = df[, -4]\n##transform the response\nlibrary(MASS)\ng1 <- lm(mortality ~ income+ region+ income: region,df)\n##find the outlier\ncook <- cooks.distance(g1)\nhalfnorm(cook, nlab = 3,ylab = \"Cook's distance\")\n##remove the ourliers and then use boxcox to find lambda\n##df <- df[-c(25, 72,27),]\ng1 <- lm(mortality ~ income+ region+ income: region,df)\nboxcox(g1, data = df, plotit =T)\n##transform the response\ng2 <- lm(log(mortality)~ income + region+ income: region,df)\nboxcox(g2, data = df,plotit =T,lambda = seq(-2, 4, by =0.05))\nsummary(g1)\nsummary(g2)\n##The interaction term thorax: act ivity is not significant indicat- ing that we can fit the same slope within each group. \n##No further simplification is possible.\n##transform the predictors\ng4 <- lm(log(mortality)~ log(income) + region,df)\nsummary(g4)\n##simply check\nplot(df$income, df$mortality)\nidentify(df$income, df$mortality)\n## [1] 25 27 72\n##compute cook's distance to check influential points\nplot(mortality ~income, df)\nidentify(income,mortality)\ncook<-cooks.distance(g4)\nhalfnorm(cook,nlab=3,ylab=\"Cook's Distance\")\n##identify the influential points\ndf[c(72,25,27),]\n##Canada libya Saudi_Arabia\nti<-rstudent(g4)\npt(ti[72],df=101-5-1)\n##Compute the p-value and compare with alpha/n\n2*(1-pt(ti[72],df=101-5-1))-0.05/101\n##Afganistan 0.00573199  not outlier\npt(ti[25],df=101-5-1)\n2*(1-pt(ti[25],df=101-5-1))-0.05/101\n##Libya 0.001954266 is not an outlier\npt(ti[27],df=101-5-1)\n2*(1-pt(ti[27],df=101-5-1))-0.05/101\n##Saudi_Arabia -0.0004949912 not outlier\n##remove 27th point and refit\ndf <- df[-27,]\ng4 <- lm(log(mortality)~ log(income) + region,df)\n\n##standard analysis of covariance\ng_cov <- lm(log(mortality)~ log(income)*region,df)\nanova(g_cov)\nplot(g4$fitted.values,g4$residuals,xlab=\"Fitted\",ylab=\"Residuals\",main=\"\")\nabline(h=0)\nqqnorm(g4$residual,ylab=\"Residuals\")\nqqline(g4$residual)\nhalfnorm(lm.influence(g4)$hat,nlab=2,ylab=\"Leverages\")\nplot(g4$residuals/((summary(g4)$sig)*sqrt(1-lm.influence(g4)$hat)), g4$residuals,xlab=\"Studentized Residuals\",ylab=\"Raw Residuals\")\n\n\n\n\n\n",
+    "created" : 1448994593675.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3608956907",
+    "id" : "32F05DEB",
+    "lastKnownWriteTime" : 1449085802,
+    "path" : "~/Desktop/STAT 500/HW/HW9/500HW9.R",
+    "project_path" : "500HW9.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

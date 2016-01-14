@@ -1,0 +1,17 @@
+{
+    "contents" : "library(MASS)\ndata(trees)\nattach(trees)\n#part a\ng1 <-  lm(Volume~ Girth +  Height)\nboxcox(g1, plotit =T)\nboxcox(g1, lambda = seq(0.0, 0.6, by =0.05))\ng2 <- lm(I(Volume^0.3)~Girth + Height)\nboxcox(g2, plotit =T,lambda = seq(0.0, 2, by =0.05))\nsummary(g1)\nsummary(g2)\n\n#part b\ng3 <- lm(Volume~ Girth+Height+I(Girth*Height)+I(Girth^2)+I(Height^2))\nsummary(g3)\n##remove Height^2\ng4 <- lm(Volume~ Girth+Height+I(Girth*Height)+I(Girth^2))\nsummary(g4)\n##remove Girth^2\ng5 <- lm(Volume~ Girth+Height+I(Girth*Height))\nsummary(g5)\n\n#part c\ng6 <- lm(I(Volume^0.3)~ Girth+Height+I(Girth*Height)+I(Girth^2)+I(Height^2))\nsummary(g6)\n## remove Girth^2\ng7 <- lm(I(Volume^0.3)~ Girth+Height+I(Girth*Height)+I(Height^2))\nsummary(g7)\n##remove Height^2\ng8 <- lm(I(Volume^0.3)~ Girth+Height+I(Girth*Height))\nsummary(g8)\n##remove Girth*Height\ng9 <- lm(I(Volume^0.3)~ Girth+Height)\nsummary(g9)",
+    "created" : 1449002080444.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4248986621",
+    "id" : "F7754D6B",
+    "lastKnownWriteTime" : 1449006366,
+    "path" : "~/Desktop/STAT 500/HW/HW6/500_HW6.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

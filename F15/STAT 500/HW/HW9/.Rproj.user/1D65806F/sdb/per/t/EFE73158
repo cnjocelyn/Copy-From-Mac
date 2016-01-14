@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1448994705461.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "EFE73158",
+    "lastKnownWriteTime" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "iy2z09zw4r",
+        "caption" : "infmort",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=infmort&cache_key=iy2z09zw4r",
+        "displayedObservations" : "105",
+        "environment" : "",
+        "object" : "infmort",
+        "totalObservations" : "105",
+        "variables" : "4"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}
